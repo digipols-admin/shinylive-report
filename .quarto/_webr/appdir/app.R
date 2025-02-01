@@ -1,0 +1,77 @@
+library(shiny)
+
+ui <- fluidPage(
+  titlePanel("Simple Histogram"),
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("bins", "Number of bins:", min = 1, max = 50, value = 30)
+    ),
+    mainPanel(
+      plotOutput("distPlot")
+    )
+  )
+)
+
+server <- function(input, output) {
+  output$distPlot <- renderPlot({
+    x <- faithful[, 2]
+    bins <- seq(min(x), max(x), length.out = input$bins + 1)
+    hist(x, breaks = bins, col = "darkgray", border = "white",
+         xlab = "Waiting time (mins)",
+         main = "Histogram of waiting times")
+  })
+}
+
+shinyApp(ui, server)
+
+<!-- -->
+
+::: {.quarto-embedded-source-code}
+```````````````````{.markdown shortcodes="false"}
+---
+title: "My Shinylive Demo"
+format: 
+  html:
+    code-tools: true
+filters:
+  - shinylive
+output-dir: docs
+---
+
+## Regular Quarto Content
+
+This is a regular markdown text that will appear in the report.
+
+## Interactive Component
+
+Here's a simple interactive histogram:
+
+```{shinylive-r}
+#| standalone: true
+#| viewerHeight: 400
+
+library(shiny)
+
+ui <- fluidPage(
+  titlePanel("Simple Histogram"),
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("bins", "Number of bins:", min = 1, max = 50, value = 30)
+    ),
+    mainPanel(
+      plotOutput("distPlot")
+    )
+  )
+)
+
+server <- function(input, output) {
+  output$distPlot <- renderPlot({
+    x <- faithful[, 2]
+    bins <- seq(min(x), max(x), length.out = input$bins + 1)
+    hist(x, breaks = bins, col = "darkgray", border = "white",
+         xlab = "Waiting time (mins)",
+         main = "Histogram of waiting times")
+  })
+}
+
+shinyApp(ui, server)

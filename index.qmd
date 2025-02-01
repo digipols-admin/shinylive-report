@@ -1,8 +1,11 @@
 ---
 title: "My Shinylive Demo"
-format: html
+format: 
+  html:
+    code-tools: true
 filters:
   - shinylive
+output-dir: docs
 ---
 
 ## Regular Quarto Content
