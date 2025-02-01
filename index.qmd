@@ -1,5 +1,5 @@
 ---
-title: "Shinylive Demo"
+title: "Shinylive Demo report"
 format: 
   html:
     code-tools: true

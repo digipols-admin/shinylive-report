@@ -29,7 +29,7 @@ shinyApp(ui, server)
 ::: {.quarto-embedded-source-code}
 ```````````````````{.markdown shortcodes="false"}
 ---
-title: "My Shinylive Demo"
+title: "Shinylive Demo"
 format: 
   html:
     code-tools: true
